@@ -1,0 +1,4 @@
+data/log-data/*
+data/song_data/*
+*.pem
+.DS_Store
