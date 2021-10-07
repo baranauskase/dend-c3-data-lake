@@ -1,0 +1,17 @@
+version = 0.1
+[default]
+[default.deploy]
+[default.deploy.parameters]
+stack_name = "dev-emr"
+s3_bucket = "aws-sam-cli-managed-default-samclisourcebucket-kyxbbftlazto"
+s3_prefix = "dev-emr"
+region = "us-west-2"
+profile = "udacity"
+capabilities = "CAPABILITY_IAM"
+parameter_overrides = [
+    "EMRDeploy=false",
+    "InstanceType=m5.xlarge",
+    "NumCoreInstances=3",
+    "ReleaseLabel=emr-5.28.0",
+    "KeyName=dev-emr"
+]
