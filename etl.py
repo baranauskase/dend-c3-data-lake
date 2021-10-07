@@ -23,6 +23,15 @@ def create_spark_session():
 
 
 def process_song_data(spark, input_data, output_data):
+    """
+    Processes song data by extracting song and artist dimension data.
+
+    Args:
+        spark: spark context
+        input_data: S3 URI prefix where raw data resides
+        output_data: S3 URI prefix where facts and dimensions need to be stored
+    """
+    
     # get filepath to song data file
     # e.g. song_data/A/B/C/TRABCEI128F424C983.json
     song_data = f'{input_data}song_data/*/*/*/*'
@@ -70,6 +79,15 @@ def process_song_data(spark, input_data, output_data):
     artists_table.write.mode('overwrite').parquet(f'{output_data}/artists.parquet')
 
 def process_log_data(spark, input_data, output_data):
+    """
+    Processes log data by extracting user and time dimensions as well song play facts.
+
+    Args:
+        spark: spark context
+        input_data: S3 URI prefix where raw data resides
+        output_data: S3 URI prefix where facts and dimensions need to be stored
+    """
+
     # get filepath to log data file
     # e.g. log_data/2018/11/2018-11-12-events.json
     log_data = f'{input_data}log_data/*/*/*'
@@ -176,6 +194,11 @@ def process_log_data(spark, input_data, output_data):
 
 
 def main():
+    """
+    Entrypoint of the script. Sets up spark session, processes song data and then
+    log data.
+    """
+
     spark = create_spark_session()
     input_data = "s3a://udacity-aws-training-802175223382/"
     output_data = "s3a://udacity-aws-training-802175223382/sparkify"
