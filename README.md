@@ -2,7 +2,7 @@
 
 In this project, I'll apply what I've learned on Spark and data lakes to
 build an ETL pipeline for a data lake hosted on S3. To complete the project,
-I will load load data from S3, process the data into analytics tables using Spark,
+I will load data from S3, process the data into analytics tables using Spark,
 and load them back into S3. I'll deploy this Spark process on a cluster using AWS.
 
 # Background
@@ -25,8 +25,6 @@ I'll be working with two datasets that reside in S3. Here are the S3 links for e
 
  - Song data: `s3://udacity-dend/song_data`
  - Log data: `s3://udacity-dend/log_data`
-
-Log data json path: `s3://udacity-dend/log_json_path.json`
 
 ## Songs
 
