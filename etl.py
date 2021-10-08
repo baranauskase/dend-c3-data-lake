@@ -34,7 +34,7 @@ def process_song_data(spark, input_data, output_data):
     
     # get filepath to song data file
     # e.g. song_data/A/B/C/TRABCEI128F424C983.json
-    song_data = f'{input_data}song_data/*/*/*/*'
+    song_data = f'{input_data}/song_data/*/*/*/*'
     
     # read song data file
     df = spark.read.option('multiline', 'true').json(song_data)
@@ -90,7 +90,7 @@ def process_log_data(spark, input_data, output_data):
 
     # get filepath to log data file
     # e.g. log_data/2018/11/2018-11-12-events.json
-    log_data = f'{input_data}log_data/*/*/*'
+    log_data = f'{input_data}/log_data/*/*/*'
         
     # read log data file
     df = spark.read.option('multiline', 'false').json(log_data)
@@ -200,8 +200,9 @@ def main():
     """
 
     spark = create_spark_session()
-    input_data = "s3a://udacity-aws-training-802175223382/"
-    output_data = "s3a://udacity-aws-training-802175223382/sparkify"
+
+    input_data = config.get('IO', 'INPUT_DATA')
+    output_data = config.get('IO', 'OUTPUT_DATA')
 
     process_song_data(spark, input_data, output_data)    
     process_log_data(spark, input_data, output_data)
